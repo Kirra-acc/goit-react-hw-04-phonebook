@@ -12,7 +12,7 @@ export const ListItem = ({ name, number, id, deleteContact }) => {
       <button
         className={s.deleteBtn}
         type="button"
-        onClick={event => deleteContact(id, event)}
+        onClick={() => deleteContact(id)}
       >
         Delete
       </button>
