@@ -6,7 +6,7 @@ export const Input = ({ contacts, newContactState }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const handleValueChange = (label, event) => {
+  const handleValueChange = event => {
     const type = event.target.name;
     const value = event.target.value;
     if (type === 'name') {
