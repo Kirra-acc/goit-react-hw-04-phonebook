@@ -7,13 +7,16 @@ export const Input = ({ contacts, newContactState }) => {
   const [number, setNumber] = useState('');
 
   const handleValueChange = event => {
-    const type = event.target.name;
-    const value = event.target.value;
-    if (type === 'name') {
-      setName(value);
-    }
-    if (type === 'number') {
-      setNumber(value);
+    const { name, value } = event.currentTarget;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        return;
     }
   };
 
@@ -40,7 +43,7 @@ export const Input = ({ contacts, newContactState }) => {
           <input
             className={s.formInput}
             value={name}
-            onChange={event => handleValueChange('name', event)}
+            onChange={handleValueChange}
             type="text"
             name="name"
             placeholder="Contact name"
@@ -52,7 +55,7 @@ export const Input = ({ contacts, newContactState }) => {
         <label className={s.formLabel}>
           <input
             className={s.formInput}
-            onChange={event => handleValueChange('number', event)}
+            onChange={handleValueChange}
             value={number}
             type="tel"
             name="number"
